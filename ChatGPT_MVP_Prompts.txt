@@ -1,0 +1,6 @@
+1. Consider yourself as a PM. Build an MVP on the layout given in the image. Features: When the user types more than 8 words or uses "," or "." or "?" or ":" or ";"then a nudge for the usage of mic appears for three seconds.
+2. Now build a feature in this, where the user should be able to pause while dictating a prompt and type or can resume to speak when he wants to.
+3. Add a send button after live conversation icon.
+4. Limit the mic nudge display to "one nudge/promt"
+5. In the menu bar on the left side of the screen, add the options 1. New chat 2. Images 3. Apps 4. New Project 5. Chat History
+6. In the RHS Add a call button, in which after dialling it will start conversating like a natural human on call and give the answers of prompts via voice on call.
