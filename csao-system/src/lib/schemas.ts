@@ -12,6 +12,8 @@ export const RecommendationItemSchema = z.object({
     category: z.string(),
     description: z.string(),
     image: z.string(),
+    cuisine: z.string().optional(),
+    pairingTags: z.array(z.string()).optional(),
 });
 
 /**

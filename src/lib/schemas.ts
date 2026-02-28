@@ -11,7 +11,9 @@ export const RecommendationItemSchema = z.object({
     rating: z.number().min(0).max(5),
     category: z.string(),
     description: z.string(),
-    image: z.string().url(),
+    image: z.string(),
+    cuisine: z.string().optional(),
+    pairingTags: z.array(z.string()).optional(),
 });
 
 /**
