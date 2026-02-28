@@ -7,13 +7,16 @@ import { ShoppingCart, ChevronUp, ChevronDown, Trash2, Plus, Minus, X } from 'lu
 import { useCartStore } from '@/features/cart/cartStore';
 import { cn } from '@/lib/utils';
 
-const CSAORail = dynamic(() => import('@/components/recommendations/csao-rail').then(mod => mod.CSAORail), {
+const SequentialRail = dynamic(() => import('@/components/recommendations/sequential-rail').then(mod => mod.SequentialRail), {
     ssr: false,
     loading: () => <div className="h-40 w-full animate-pulse bg-muted/50 rounded-xl" />
 });
 
 export const PersistentCart = () => {
     const { items, updateQuantity, clearCart, getSubtotal, getTotalItems, getTotal } = useCartStore();
+
+    // Get the first item added to the cart
+    const firstItemId = items.length > 0 ? items[0].id : null;
     const [isExpanded, setIsExpanded] = useState(false);
     const [showConfirmClear, setShowConfirmClear] = useState(false);
     const [mounted, setMounted] = React.useState(false);
@@ -121,10 +124,10 @@ export const PersistentCart = () => {
                     )}
                 </AnimatePresence>
 
-                {/* CSAO Recommendation Rail */}
+                {/* Sequential Recommendation Rail */}
                 {(isExpanded || (typeof window !== 'undefined' && window.innerWidth >= 1024)) && (
                     <div className="border-t pt-2">
-                        <CSAORail />
+                        <SequentialRail firstItemId={firstItemId} />
                     </div>
                 )}
 

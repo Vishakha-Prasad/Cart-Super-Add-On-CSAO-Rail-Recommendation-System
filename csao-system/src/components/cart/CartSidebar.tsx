@@ -5,13 +5,14 @@ import { useCartStore } from '@/features/cart/cartStore';
 import { Button } from '@/components/atoms/Button';
 import { ShoppingCart, X, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CSAORail } from '@/components/recommendations/csao-rail';
+import { SequentialRail } from '@/components/recommendations/sequential-rail';
 import { cn } from '@/lib/utils';
 
 export const CartSidebar = () => {
     const [hasMounted, setHasMounted] = React.useState(false);
     const { items, removeItem, clearCart, getSubtotal } = useCartStore();
     const total = getSubtotal();
+    const firstItemId = items.length > 0 ? items[0].id : null;
 
     React.useEffect(() => {
         setHasMounted(true);
@@ -80,7 +81,7 @@ export const CartSidebar = () => {
                 </div>
 
                 <div className="pt-6 border-t border-[#DFE1E6]">
-                    <CSAORail />
+                    <SequentialRail firstItemId={firstItemId} />
                 </div>
             </div>
 
