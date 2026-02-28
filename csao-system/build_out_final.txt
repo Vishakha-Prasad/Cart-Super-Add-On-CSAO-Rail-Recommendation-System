@@ -1,0 +1,21 @@
+
+> csao-rail-system@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.0
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/app/layout.tsx:5:35
+Type error: Cannot find module '@/components/providers/animation-provider' or its corresponding type declarations.
+
+[0m [90m 3 |[39m [36mimport[39m [32m'./globals.css'[39m[33m;[39m[0m
+[0m [90m 4 |[39m[0m
+[0m[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { [33mAnimationProvider[39m } [36mfrom[39m [32m'@/components/providers/animation-provider'[39m[33m;[39m[0m
+[0m [90m   |[39m                                   [31m[1m^[22m[39m[0m
+[0m [90m 6 |[39m [36mimport[39m { [33mTrackingProvider[39m } [36mfrom[39m [32m'@/components/providers/tracking-provider'[39m[33m;[39m[0m
+[0m [90m 7 |[39m [36mimport[39m { [33mExperimentProvider[39m } [36mfrom[39m [32m'@/components/providers/experiment-provider'[39m[33m;[39m[0m
+[0m [90m 8 |[39m[0m

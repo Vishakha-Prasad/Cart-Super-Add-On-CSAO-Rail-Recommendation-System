@@ -3,11 +3,11 @@ import axios from 'axios';
 import { z } from 'zod';
 
 const RecommendationSchema = z.object({
-    id: string(),
-    name: string(),
-    description: string(),
-    price: number(),
-    imageUrl: string(),
+    id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    price: z.number(),
+    imageUrl: z.string(),
 });
 
 type Recommendation = z.infer<typeof RecommendationSchema>;
