@@ -1,0 +1,146 @@
+﻿
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mC:/Users/Vishakha Prasad/OneDrive/Desktop/MY WORK/csao-system[39m
+
+[90mstdout[2m | src/services/smart-engine.test.ts[2m > [22m[2mSmartRecommendationEngine: Scoring Logic[2m > [22m[2mshould prioritize North Indian Breads when North Indian Main is added
+[22m[39mComparing Butter Chicken (Cuisine: North Indian) with Paneer Tikka (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Dal Makhani (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Garlic Naan (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Gulab Jamun (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Chicken Biryani (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Tandoori Chicken (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Mango Lassi (Cuisine: Beverages)
+Comparing Butter Chicken (Cuisine: North Indian) with Veg Samosa (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Chana Masala (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Palak Paneer (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Chicken Tikka Masala (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Mixed Veg Paratha (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Rasmalai (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Masala Tea (Cuisine: Beverages)
+Comparing Butter Chicken (Cuisine: North Indian) with Veg Hakka Noodles (Cuisine: Indo-Chinese)
+Comparing Butter Chicken (Cuisine: North Indian) with Gobi Manchurian (Cuisine: Indo-Chinese)
+Comparing Butter Chicken (Cuisine: North Indian) with Fish Amritsari (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Jalebi (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Laddoo (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Masala Papad (Cuisine: North Indian)
+SmartEngine Debug: Context=Butter Chicken, Top 20 suggestions:
+1. Garlic Naan (Score: 45, Category: Breads)
+2. Paneer Tikka (Score: 40, Category: Appetizers)
+3. Palak Paneer (Score: 40, Category: Main Course)
+
+[90mstdout[2m | src/services/smart-engine.test.ts[2m > [22m[2mSmartRecommendationEngine: Scoring Logic[2m > [22m[2mshould prioritize Indo-Chinese Appetizers when Indo-Chinese Main is added
+[22m[39mComparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Butter Chicken (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Paneer Tikka (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Dal Makhani (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Garlic Naan (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Gulab Jamun (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Chicken Biryani (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Tandoori Chicken (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Mango Lassi (Cuisine: Beverages)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Veg Samosa (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Chana Masala (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Palak Paneer (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Chicken Tikka Masala (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Mixed Veg Paratha (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Rasmalai (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Masala Tea (Cuisine: Beverages)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Gobi Manchurian (Cuisine: Indo-Chinese)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Fish Amritsari (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Jalebi (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Laddoo (Cuisine: North Indian)
+Comparing Veg Hakka Noodles (Cuisine: Indo-Chinese) with Masala Papad (Cuisine: North Indian)
+SmartEngine Debug: Context=Veg Hakka Noodles, Top 18 suggestions:
+1. Gobi Manchurian (Score: 40, Category: Appetizers)
+2. Garlic Naan (Score: 25, Category: Breads)
+3. Paneer Tikka (Score: 20, Category: Appetizers)
+
+[90mstdout[2m | src/services/smart-engine.test.ts[2m > [22m[2mSmartRecommendationEngine: Scoring Logic[2m > [22m[2mshould suggest desserts for a spicy main course
+[22m[39mComparing Chicken Biryani (Cuisine: North Indian) with Butter Chicken (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Paneer Tikka (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Dal Makhani (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Garlic Naan (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Gulab Jamun (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Tandoori Chicken (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Mango Lassi (Cuisine: Beverages)
+Comparing Chicken Biryani (Cuisine: North Indian) with Veg Samosa (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Chana Masala (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Palak Paneer (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Chicken Tikka Masala (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Mixed Veg Paratha (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Rasmalai (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Masala Tea (Cuisine: Beverages)
+Comparing Chicken Biryani (Cuisine: North Indian) with Veg Hakka Noodles (Cuisine: Indo-Chinese)
+Comparing Chicken Biryani (Cuisine: North Indian) with Gobi Manchurian (Cuisine: Indo-Chinese)
+Comparing Chicken Biryani (Cuisine: North Indian) with Fish Amritsari (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Jalebi (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Laddoo (Cuisine: North Indian)
+Comparing Chicken Biryani (Cuisine: North Indian) with Masala Papad (Cuisine: North Indian)
+SmartEngine Debug: Context=Chicken Biryani, Top 20 suggestions:
+1. Garlic Naan (Score: 45, Category: Breads)
+2. Paneer Tikka (Score: 40, Category: Appetizers)
+3. Palak Paneer (Score: 40, Category: Main Course)
+
+[90mstdout[2m | src/services/smart-engine.test.ts[2m > [22m[2mSmartRecommendationEngine: Scoring Logic[2m > [22m[2mshould suggest beverages to complement main courses
+[22m[39mComparing Chicken Tikka Masala (Cuisine: North Indian) with Butter Chicken (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Paneer Tikka (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Dal Makhani (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Garlic Naan (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Gulab Jamun (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Chicken Biryani (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Tandoori Chicken (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Mango Lassi (Cuisine: Beverages)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Veg Samosa (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Chana Masala (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Palak Paneer (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Mixed Veg Paratha (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Rasmalai (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Masala Tea (Cuisine: Beverages)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Veg Hakka Noodles (Cuisine: Indo-Chinese)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Gobi Manchurian (Cuisine: Indo-Chinese)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Fish Amritsari (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Jalebi (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Laddoo (Cuisine: North Indian)
+Comparing Chicken Tikka Masala (Cuisine: North Indian) with Masala Papad (Cuisine: North Indian)
+SmartEngine Debug: Context=Chicken Tikka Masala, Top 20 suggestions:
+1. Garlic Naan (Score: 45, Category: Breads)
+2. Paneer Tikka (Score: 40, Category: Appetizers)
+3. Palak Paneer (Score: 40, Category: Main Course)
+
+[90mstdout[2m | src/services/smart-engine.test.ts[2m > [22m[2mSmartRecommendationEngine: Scoring Logic[2m > [22m[2mshould exclude items already in the cart
+[22m[39mComparing Butter Chicken (Cuisine: North Indian) with Paneer Tikka (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Dal Makhani (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Gulab Jamun (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Chicken Biryani (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Tandoori Chicken (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Mango Lassi (Cuisine: Beverages)
+Comparing Butter Chicken (Cuisine: North Indian) with Veg Samosa (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Chana Masala (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Palak Paneer (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Chicken Tikka Masala (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Mixed Veg Paratha (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Rasmalai (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Masala Tea (Cuisine: Beverages)
+Comparing Butter Chicken (Cuisine: North Indian) with Veg Hakka Noodles (Cuisine: Indo-Chinese)
+Comparing Butter Chicken (Cuisine: North Indian) with Gobi Manchurian (Cuisine: Indo-Chinese)
+Comparing Butter Chicken (Cuisine: North Indian) with Fish Amritsari (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Jalebi (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Laddoo (Cuisine: North Indian)
+Comparing Butter Chicken (Cuisine: North Indian) with Masala Papad (Cuisine: North Indian)
+SmartEngine Debug: Context=Butter Chicken, Top 19 suggestions:
+1. Paneer Tikka (Score: 40, Category: Appetizers)
+2. Palak Paneer (Score: 40, Category: Main Course)
+3. Mixed Veg Paratha (Score: 40, Category: Breads)
+
+ [32mΓ£ô[39m src/services/smart-engine.test.ts[2m > [22mSmartRecommendationEngine: Scoring Logic[2m > [22mshould prioritize North Indian Breads when North Indian Main is added[32m 3[2mms[22m[39m
+ [32mΓ£ô[39m src/services/smart-engine.test.ts[2m > [22mSmartRecommendationEngine: Scoring Logic[2m > [22mshould prioritize Indo-Chinese Appetizers when Indo-Chinese Main is added[32m 1[2mms[22m[39m
+ [31m├ù[39m src/services/smart-engine.test.ts[2m > [22mSmartRecommendationEngine: Scoring Logic[2m > [22mshould suggest desserts for a spicy main course[32m 6[2mms[22m[39m
+[31m   ΓåÆ expected [ 'Breads', 'Appetizers', ΓÇª(3) ] to include 'Desserts'[39m
+ [31m├ù[39m src/services/smart-engine.test.ts[2m > [22mSmartRecommendationEngine: Scoring Logic[2m > [22mshould suggest beverages to complement main courses[32m 2[2mms[22m[39m
+[31m   ΓåÆ expected [ 'Garlic Naan', 'Paneer Tikka', ΓÇª(3) ] to include 'Mango Lassi'[39m
+ [32mΓ£ô[39m src/services/smart-engine.test.ts[2m > [22mSmartRecommendationEngine: Scoring Logic[2m > [22mshould exclude items already in the cart[32m 1[2mms[22m[39m
+ [32mΓ£ô[39m src/services/smart-engine.test.ts[2m > [22mSmartRecommendationEngine: Scoring Logic[2m > [22mshould provide fallback title for general recommendations[32m 0[2mms[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (6)[39m
+[2m   Start at [22m 03:15:18
+[2m   Duration [22m 2.18s[2m (transform 98ms, setup 0ms, import 218ms, tests 14ms, environment 1.69s)[22m
+
