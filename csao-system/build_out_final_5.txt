@@ -1,0 +1,24 @@
+
+> csao-rail-system@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.0
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/2) ...
+ ✓ Generating static pages (2/2)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (pages)                             Size     First Load JS
+─ ○ /404                                  181 B            79 kB
++ First Load JS shared by all             78.8 kB
+  ├ chunks/framework-f66176bb897dc684.js  45.2 kB
+  ├ chunks/main-a3ab312fc52b3205.js       32 kB
+  └ other shared chunks (total)           1.63 kB
+
+○  (Static)  prerendered as static content
+

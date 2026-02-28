@@ -1,0 +1,21 @@
+
+> csao-rail-system@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.0
+
+
+> Build error occurred
+Error: EINVAL: invalid argument, readlink 'C:\Users\Vishakha Prasad\OneDrive\Desktop\MY WORK\csao-system\.next\package.json'
+    at async Object.readlink (node:internal/fs/promises:971:10)
+    at async C:\Users\Vishakha Prasad\OneDrive\Desktop\MY WORK\csao-system\node_modules\next\dist\lib\recursive-delete.js:58:30
+    at async Promise.all (index 3)
+    at async recursiveDelete (C:\Users\Vishakha Prasad\OneDrive\Desktop\MY WORK\csao-system\node_modules\next\dist\lib\recursive-delete.js:51:5)
+    at async C:\Users\Vishakha Prasad\OneDrive\Desktop\MY WORK\csao-system\node_modules\next\dist\build\index.js:692:17
+    at async Span.traceAsyncFn (C:\Users\Vishakha Prasad\OneDrive\Desktop\MY WORK\csao-system\node_modules\next\dist\trace\trace.js:154:20)
+    at async build (C:\Users\Vishakha Prasad\OneDrive\Desktop\MY WORK\csao-system\node_modules\next\dist\build\index.js:366:9) {
+  errno: -4071,
+  code: 'EINVAL',
+  syscall: 'readlink',
+  path: 'C:\\Users\\Vishakha Prasad\\OneDrive\\Desktop\\MY WORK\\csao-system\\.next\\package.json'
+}

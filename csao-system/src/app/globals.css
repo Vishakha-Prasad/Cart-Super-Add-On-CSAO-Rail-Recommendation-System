@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 210 16% 98%;
+        /* Neutral 10 / #F4F5F7-ish */
+        --foreground: 218 54% 19%;
+        /* Neutral 800 / #172B4D */
+        --card: 0 0% 100%;
+        --card-foreground: 218 54% 19%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 218 54% 19%;
+        --primary: 216 100% 40%;
+        /* Atlassian Blue / #0052CC */
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 16% 94%;
+        /* Neutral 40 / #DFE1E6 */
+        --secondary-foreground: 218 54% 19%;
+        --muted: 210 16% 96%;
+        /* Neutral 20 / #F4F5F7 */
+        --muted-foreground: 215 13% 48%;
+        /* Neutral 500 / #6B778C */
+        --accent: 216 100% 95%;
+        /* Subtle blue accent */
+        --accent-foreground: 216 100% 40%;
+        --destructive: 0 100% 59%;
+        /* Red 400 / #FF5630 */
+        --destructive-foreground: 0 0% 100%;
+        --border: 210 16% 90%;
+        /* Neutral 50 / #C1C7D0 */
+        --input: 210 16% 90%;
+        --ring: 216 100% 40%;
+        --radius: 0.25rem;
+        /* Atlassian standard rounding is 3-4px */
+    }
+
+    .dark {
+        --background: 0 0% 10.6%;
+        --foreground: 0 0% 100%;
+        --card: 0 0% 10.6%;
+        --card-foreground: 0 0% 100%;
+        --popover: 0 0% 10.6%;
+        --popover-foreground: 0 0% 100%;
+        --primary: 355 73% 46%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 96.1%;
+        --secondary-foreground: 0 0% 10.6%;
+        --muted: 0 0% 14.9%;
+        --muted-foreground: 0 0% 63.9%;
+        --accent: 0 0% 14.9%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 14.9%;
+        --input: 0 0% 14.9%;
+        --ring: 355 73% 46%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
