@@ -1,45 +1,46 @@
-/**
- * Tracking System Verification
- */
+import { tracker } from './tracker';
+import { describe, test, expect, beforeEach, vi } from 'vitest';
 
-import { tracker } from '../lib/tracker';
+describe('Tracking System', () => {
+    beforeEach(() => {
+        localStorage.clear();
+        sessionStorage.clear();
+        // Reset tracker state if possible, or just mock the flush
+        vi.useFakeTimers();
+    });
 
-async function verifyTracking() {
-    console.log('--- Phase 6: Tracking Verification ---');
+    test('should queue and persist events to localStorage', () => {
+        tracker.track('test_event_1', { data: 'test1' });
 
-    console.log('1. Testing Event Queueing...');
-    tracker.track('test_event_1', { data: 'test1' });
-    tracker.track('test_event_2', { data: 'test2' });
+        const queue = JSON.parse(localStorage.getItem('csao_tracking_queue') || '[]');
+        expect(queue.length).toBeGreaterThanOrEqual(1);
+        expect(queue[0].eventName).toBe('test_event_1');
+    });
 
-    // Check localStorage (simulated)
-    const queue = JSON.parse(localStorage.getItem('csao_tracking_queue') || '[]');
-    if (queue.length >= 2) {
-        console.log('✅ Pass: Events queued and persisted to localStorage');
-    }
+    test('should persist session ID', () => {
+        // Trigger session ID creation
+        tracker.track('init');
+        const sid1 = sessionStorage.getItem('csao_session_id');
+        expect(sid1).toBeDefined();
 
-    console.log('2. Testing Batching logic...');
-    // Push events to hit BATCH_SIZE (10)
-    for (let i = 0; i < 8; i++) {
-        tracker.track(`bulk_event_${i}`);
-    }
+        const sid2 = sessionStorage.getItem('csao_session_id');
+        expect(sid1).toBe(sid2);
+    });
 
-    // After 10th event, flush should trigger
-    // Since flush is mock, we check if queue is cleared
-    setTimeout(() => {
-        const clearedQueue = JSON.parse(localStorage.getItem('csao_tracking_queue') || '[]');
-        if (clearedQueue.length === 0) {
-            console.log('✅ Pass: Batch flush triggered successfully');
+    test('should flush when batch size is reached', async () => {
+        // Clear queue first
+        localStorage.setItem('csao_tracking_queue', '[]');
+
+        // Push 10 events (BATCH_SIZE is 10 in tracker.ts)
+        for (let i = 0; i < 10; i++) {
+            tracker.track(`event_${i}`);
         }
-    }, 200);
 
-    console.log('3. Session Persistence...');
-    const sid1 = sessionStorage.getItem('csao_session_id');
-    const sid2 = sessionStorage.getItem('csao_session_id');
-    if (sid1 === sid2 && sid1) {
-        console.log('✅ Pass: Session ID persisted correctly');
-    }
-
-    console.log('--- Tracking Verification Complete ---');
-}
-
-// verifyTracking();
+        // Flush is async or triggered in next tick
+        // Since tracker.ts uses requestIdleCallback, it might be tricky to test without mocks
+        // But let's check if the queue is processed
+        const queue = JSON.parse(localStorage.getItem('csao_tracking_queue') || '[]');
+        // If it flushed, it should be empty (or at least smaller)
+        expect(queue.length).toBe(0);
+    });
+});

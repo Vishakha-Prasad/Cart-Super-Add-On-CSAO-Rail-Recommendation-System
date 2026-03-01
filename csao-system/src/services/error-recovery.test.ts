@@ -1,39 +1,17 @@
-/**
- * Error Recovery Verification
- */
-
 import { fetchRecommendations } from './recommendation-service';
+import { describe, test, expect } from 'vitest';
 
-async function verifyErrorRecovery() {
-    console.log('--- Phase 2: Error Recovery Verification ---');
-
-    try {
-        console.log('1. Verifying Cart Conflict Filtering...');
-        const cartItems = ['item_1', 'item_2'];
+describe('Error Recovery & Resilience', () => {
+    test('should NOT suggest items already in the cart (conflict filtering)', async () => {
+        const cartItems = ['rec_1', 'rec_2'];
         const result = await fetchRecommendations(cartItems);
 
-        const overlap = result.recommendations.filter(r => cartItems.includes(r.id));
+        const overlap = result.items.filter(r => cartItems.includes(r.id));
+        expect(overlap.length).toBe(0);
+    });
 
-        if (overlap.length === 0) {
-            console.log('✅ Pass: No items in recommendations exist in the cart');
-        }
-
-        console.log('2. Verifying Stale Data Handling...');
-        // We already have mockRedisCache and local storage
-        console.log('✅ Pass: Service layer serves cached data when API fails or user is offline');
-
-        console.log('3. Verifying Component Resilience...');
-        console.log('✅ Pass: CSAORail wrapped in ErrorBoundary with Retry logic');
-
-        console.log('4. Verifying Communication layer...');
-        console.log('✅ Pass: Toast management system and Offline banner implemented');
-
-        console.log('--- Error Recovery Verification Complete ---');
-    } catch (error) {
-        console.error('❌ Error Recovery Verification Failed:', error);
-    }
-}
-
-if (typeof window === 'undefined') {
-    verifyErrorRecovery();
-}
+    test('should provide a default title when cart is empty', async () => {
+        const result = await fetchRecommendations([]);
+        expect(result.title).toBe('You might also like');
+    });
+});

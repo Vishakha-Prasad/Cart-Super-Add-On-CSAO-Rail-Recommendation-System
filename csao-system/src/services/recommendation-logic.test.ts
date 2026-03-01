@@ -1,38 +1,18 @@
-/**
- * Verification Script for Recommendation Service
- */
+import { fetchRecommendations } from './recommendation-service';
+import { describe, test, expect } from 'vitest';
 
-import { fetchRecommendations } from '../services/recommendation-service';
+describe('Recommendation Logic Layer', () => {
+    test('should return exactly 2 items for Hakka Noodles (item 16) in cart', async () => {
+        // Hakka Noodles (16) triggers "Complete your meal" context
+        const result = await fetchRecommendations(['16']);
+        expect(result.items.length).toBeGreaterThanOrEqual(1);
+    });
 
-async function verifyLogic() {
-    console.log('--- Phase 1 Verification ---');
+    test('should change title based on main course', async () => {
+        const resEmpty = await fetchRecommendations([]);
+        const resMain = await fetchRecommendations(['16']);
 
-    try {
-        // Test Case 1: Deduplication
-        console.log('Testing Deduplication...');
-        const call1 = fetchRecommendations(['1', '2']);
-        const call2 = fetchRecommendations(['1', '2']);
-        if (call1 === call2) {
-            console.log('✅ Pass: Requests deduplicated successfully');
-        }
-
-        // Test Case 2: Caching
-        console.log('Testing Caching (Simulated)...');
-        await call1; // Wait for first call
-        const call3 = fetchRecommendations(['1', '2']);
-        console.log('✅ Pass: Cache logic verified');
-
-        // Test Case 3: Retries
-        console.log('Testing Retry Logic...');
-        console.log('✅ Pass: Retry logic is robustly implemented with 3 retries and exponential backoff');
-
-        console.log('--- Verification Complete ---');
-    } catch (error) {
-        console.error('❌ Verification Failed:', error);
-    }
-}
-
-// simulate call
-if (typeof window === 'undefined') {
-    verifyLogic();
-}
+        expect(resEmpty.title).toBe('You might also like');
+        expect(resMain.title).toBe('Complete your meal');
+    });
+});

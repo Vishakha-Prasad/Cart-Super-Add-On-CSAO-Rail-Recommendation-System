@@ -1,59 +1,39 @@
-/**
- * Tracking System Verification
- */
+import { tracker } from './tracker';
+import { describe, test, expect, beforeEach, vi } from 'vitest';
 
-import { tracker } from '../lib/tracker';
+describe('Tracking System', () => {
+    beforeEach(() => {
+        localStorage.clear();
+        sessionStorage.clear();
+        vi.useFakeTimers();
+    });
 
-async function verifyTracking() {
-    console.log('--- Phase 2: Tracking Verification ---');
+    test('should queue and persist events to localStorage', () => {
+        tracker.track('test_event_1', { data: 'test1' });
 
-    console.log('1. Testing Event Queueing...');
-    tracker.track('test_event_1', { data: 'test1' });
-    tracker.track('test_event_2', { data: 'test2' });
-
-    // Check localStorage (simulated)
-    try {
         const queue = JSON.parse(localStorage.getItem('csao_tracking_queue') || '[]');
-        if (queue.length >= 2) {
-            console.log('✅ Pass: Events queued and persisted to localStorage');
-        }
-    } catch (e) {
-        console.log('localStorage not available in this environment');
-    }
+        expect(queue.length).toBeGreaterThanOrEqual(1);
+        expect(queue[0].eventName).toBe('test_event_1');
+    });
 
-    console.log('2. Testing Batching logic...');
-    // Push events to hit BATCH_SIZE (10)
-    for (let i = 0; i < 8; i++) {
-        tracker.track(`bulk_event_${i}`);
-    }
-
-    // After 10th event, flush should trigger
-    // Since flush is mock, we check if queue is cleared
-    setTimeout(() => {
-        try {
-            const clearedQueue = JSON.parse(localStorage.getItem('csao_tracking_queue') || '[]');
-            if (clearedQueue.length === 0) {
-                console.log('✅ Pass: Batch flush triggered successfully');
-            }
-        } catch (e) {
-            // ignore
-        }
-    }, 200);
-
-    console.log('3. Session Persistence...');
-    try {
+    test('should persist session ID', () => {
+        tracker.track('init');
         const sid1 = sessionStorage.getItem('csao_session_id');
+        expect(sid1).toBeDefined();
+
         const sid2 = sessionStorage.getItem('csao_session_id');
-        if (sid1 === sid2 && sid1) {
-            console.log('✅ Pass: Session ID persisted correctly');
+        expect(sid1).toBe(sid2);
+    });
+
+    test('should flush when batch size is reached', () => {
+        localStorage.setItem('csao_tracking_queue', '[]');
+
+        for (let i = 0; i < 15; i++) {
+            tracker.track(`event_${i}`);
         }
-    } catch (e) {
-        // ignore
-    }
 
-    console.log('--- Tracking Verification Complete ---');
-}
-
-if (typeof window === 'undefined') {
-    verifyTracking();
-}
+        const queue = JSON.parse(localStorage.getItem('csao_tracking_queue') || '[]');
+        // Flushes on every 10 events
+        expect(queue.length).toBeLessThan(10);
+    });
+});

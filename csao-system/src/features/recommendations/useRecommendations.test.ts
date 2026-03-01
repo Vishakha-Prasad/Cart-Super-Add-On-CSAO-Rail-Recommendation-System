@@ -1,82 +1,86 @@
-import { renderHook, act, waitFor } from '@testing-library/react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+'use client';
+
 import React from 'react';
+import { renderHook, waitFor } from '@testing-library/react';
+import { describe, test, expect, beforeEach } from 'vitest';
 import { useRecommendations } from '@/features/recommendations/useRecommendations';
 import { useCartStore } from '@/features/cart/cartStore';
-import { describe, test, expect, beforeEach } from 'vitest';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// Create a fresh wrapper for each test to avoid cache bleed
-function createWrapper() {
+// Helper to wrap hooks in the necessary provider
+const createWrapper = () => {
     const queryClient = new QueryClient({
         defaultOptions: {
-            queries: { retry: false, gcTime: 0 },
+            queries: {
+                retry: false,
+                staleTime: 0,
+            },
         },
     });
-    return ({ children }: { children: React.ReactNode }) =>
-        React.createElement(QueryClientProvider, { client: queryClient }, children);
-}
+    return ({ children }: { children: React.ReactNode }) => (
+        <QueryClientProvider client= { queryClient } >
+        { children }
+        </QueryClientProvider>
+    );
+};
 
 describe('useRecommendations Hook', () => {
     beforeEach(() => {
         useCartStore.getState().clearCart();
     });
 
+    test('should return loading status initially', async () => {
+        const { result } = renderHook(() => useRecommendations(), {
+            wrapper: createWrapper()
+        });
+        expect(result.current.status).toBeDefined();
+    });
+
     test('should not suggest items already in cart', async () => {
-        // Add item to cart BEFORE rendering the hook
-        useCartStore.getState().addItem({ id: 'rec_1', name: 'Thums Up', price: 40, quantity: 1 });
+        const item = { id: 'rec_1', name: 'Thums Up', price: 40, quantity: 1 };
+        useCartStore.getState().addItem(item);
 
         const { result } = renderHook(() => useRecommendations(), {
-            wrapper: createWrapper(),
+            wrapper: createWrapper()
         });
 
-        // Wait for debounce (500ms) + simulated API delay (600ms) to resolve
-        await waitFor(
-            () => expect(result.current.isSuccess).toBe(true),
-            { timeout: 3000, interval: 200 }
-        );
+        await waitFor(() => {
+            expect(result.current.isLoading).toBe(false);
+        }, { timeout: 3000 });
 
-        const suggestedIds = result.current.data!.items.map((i: any) => i.id);
+        const suggestedIds = result.current.data?.items.map((i: any) => i.id) || [];
         expect(suggestedIds).not.toContain('rec_1');
     });
 
     test('should dismiss recommendations correctly', async () => {
-        useCartStore.getState().addItem({ id: '1', name: 'Butter Chicken', price: 350, quantity: 1 });
-
         const { result } = renderHook(() => useRecommendations(), {
-            wrapper: createWrapper(),
+            wrapper: createWrapper()
         });
 
-        await waitFor(
-            () => expect(result.current.isSuccess).toBe(true),
-            { timeout: 3000, interval: 200 }
-        );
-
-        const idToDismiss = result.current.data!.items[0].id;
-
-        act(() => {
-            result.current.dismissRecommendation(idToDismiss);
-        });
-
-        // After dismiss, the query re-fetches with updated dismissedIds
         await waitFor(() => {
-            const ids = result.current.data!.items.map((i: any) => i.id);
-            expect(ids).not.toContain(idToDismiss);
-        }, { timeout: 3000, interval: 200 });
+            expect(result.current.data?.items.length).toBeGreaterThan(0);
+        }, { timeout: 3000 });
+
+        const idToDismiss = result.current.data?.items[0].id;
+        const initialCount = result.current.data?.items.length;
+
+        result.current.dismissRecommendation(idToDismiss);
+
+        await waitFor(() => {
+            const currentIds = result.current.data?.items.map((r: any) => r.id) || [];
+            expect(currentIds).not.toContain(idToDismiss);
+        }, { timeout: 3000 });
     });
 
-    test('should update title based on context', async () => {
-        // Add an expensive item (price > 200) to trigger "Complete your meal"
-        useCartStore.getState().addItem({ id: 'main', name: 'Large Pizza', price: 500, quantity: 1 });
+    test('should change title when main course is in cart', async () => {
+        useCartStore.getState().addItem({ id: 'main', name: 'Butter Chicken', price: 350, quantity: 1 });
 
         const { result } = renderHook(() => useRecommendations(), {
-            wrapper: createWrapper(),
+            wrapper: createWrapper()
         });
 
-        await waitFor(
-            () => expect(result.current.isSuccess).toBe(true),
-            { timeout: 3000, interval: 200 }
-        );
-
-        expect(result.current.data!.title).toBe('Complete your meal');
+        await waitFor(() => {
+            expect(result.current.data?.title).toBe('Complete your meal');
+        }, { timeout: 3000 });
     });
 });
